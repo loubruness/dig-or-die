@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviour
@@ -12,6 +13,7 @@ public class Health : MonoBehaviour
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+    public GameObject gameOverScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +27,11 @@ public class Health : MonoBehaviour
 
         if (health > numOfHearts) {
             health = numOfHearts;
+        }
+
+        if(health <1 )
+        {
+            gameOver();
         }
 
         for (int i= 0; i < hearts.Length; i++)
@@ -47,5 +54,15 @@ public class Health : MonoBehaviour
                 hearts[i].enabled = false;
             }
         }
+    }
+
+    public void restartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void gameOver()
+    {
+        gameOverScreen.SetActive(true);
     }
 }
