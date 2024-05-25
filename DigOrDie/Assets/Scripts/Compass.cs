@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,12 +14,31 @@ public class Compass : MonoBehaviour
     public RectTransform NorthLayer;
 
     public Transform missionplace;
+    public Transform objective1;
+    public Transform objective2;
+    public Transform treasure;
+
+    void Start()
+    {
+        missionplace = objective1;
+    }
 
     // Update is called once per frame
     void Update()
     {
         ChangeNorthDirection();
         ChangeMissionDirection();
+        if(Math.Abs(transform.position.x - missionplace.position.x) <=2 && Math.Abs(transform.position.z - missionplace.position.z) <= 2)
+        {
+            if (missionplace == objective1)
+            {
+                missionplace = objective2;
+            }
+            else if (missionplace == objective2)
+            {
+                missionplace = treasure;
+            }
+        }
     }
 
     public void ChangeNorthDirection()
