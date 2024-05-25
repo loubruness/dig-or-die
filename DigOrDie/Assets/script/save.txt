@@ -1,0 +1,29 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+public class PlayerMovements : MonoBehaviour
+{
+
+    public float speed = 5;
+
+    private PlayerInput playerInput;
+    private Vector2 moveInput;
+    private bool jumpInput;
+    private CharacterController controller;
+
+    void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+        controller = GetComponent<CharacterController>();
+
+        // Move Action
+        playerInput.actions["Move"].performed += ctx => moveInput = ctx.ReadValue<Vector2>();
+        playerInput.actions["Move"].canceled += ctx => moveInput = Vector2.zero;
+
+        // Jump Action
+        playerInput.actions["Jump"].performed += ctx => jumpInput = ctx.ReadValueAsButton();
+        playerInput.actions["Jump"].canceled += ctx => jumpInput = false;
+    }
+
+}
