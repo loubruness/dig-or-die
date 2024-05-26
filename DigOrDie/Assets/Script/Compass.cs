@@ -57,6 +57,5 @@ public class Compass : MonoBehaviour
 
         Missionlayer.localRotation = MissionDirection * Quaternion.Euler(NorthDirection);
 
-
     }
 }

@@ -2,8 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using TMPro;
 public class PlayerMovements : MonoBehaviour
 {
 
@@ -23,10 +26,15 @@ public class PlayerMovements : MonoBehaviour
     public Transform objective1;
     public Transform objective2;
     public Transform treasure;
-
+    public TextMeshPro textObjective;
+    public TextMeshPro textDeath;
+    private float displayDuration = 4.0f;
 
     private float jumpForce = 8.0f;
     public GameObject player;
+
+    public Health health;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -39,10 +47,12 @@ public class PlayerMovements : MonoBehaviour
         treasure = GameObject.Find("Treasure").GetComponent<Transform>();
         playerInput = GetComponent<PlayerInput>();
         controller = GetComponent<CharacterController>();
+        textObjective = GameObject.Find("Text").GetComponent<TextMeshPro>();
+        textDeath = GameObject.Find("TextDeath").GetComponent<TextMeshPro>();
 
-        
+
         //TransplayerCamera = GetComponentInChildren<Camera>().transform;
-    
+
 
         // Move Action
         playerInput.actions["Move"].performed += ctx => moveInput = ctx.ReadValue<Vector2>();
@@ -106,22 +116,32 @@ public class PlayerMovements : MonoBehaviour
     private void Dig()
     {
         missionplace = player.GetComponent<Compass>().missionplace;
-        
-        //Debug.Log("Digging");
+
+        //Debug.Log(text);
         //Debug.Log("Missionplace.position "+ missionplace.position);
         //Debug.Log("transform.position"+ transform.position);
-        if(Math.Abs(transform.position.x - missionplace.position.x) <=2 && Math.Abs(transform.position.z - missionplace.position.z) <= 2)
+        if (Math.Abs(transform.position.x - missionplace.position.x) <= 2 && Math.Abs(transform.position.z - missionplace.position.z) <= 2)
         {
-            //Debug.Log("OKKK");
+            Debug.Log("OKKK");
             if (player.GetComponent<Compass>().missionplace == objective1)
             {
+                Debug.Log("premier if");
                 player.GetComponent<Compass>().missionplace = objective2;
+                textObjective.text = "1/3";
             }
             else if (player.GetComponent<Compass>().missionplace == objective2)
             {
+                Debug.Log("deuxieme if");
                 player.GetComponent<Compass>().missionplace = treasure;
+                textObjective.text = "2/3";
+            }
+            else if (player.GetComponent<Compass>().missionplace == treasure)
+            {
+                textObjective.text = "";
+                Debug.Log("avant gameOverScreen");
+                health.gameOver();
             }
         }
-        
+
     }
 }
