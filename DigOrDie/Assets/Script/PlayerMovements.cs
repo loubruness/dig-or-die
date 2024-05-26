@@ -35,6 +35,7 @@ public class PlayerMovements : MonoBehaviour
     public GameObject chest;
 
     public Health health;
+    public RandomSpawnObjective randomspawn;
     [SerializeField] ParticleSystem FX_DirtSplatter;
 
 
@@ -71,6 +72,8 @@ public class PlayerMovements : MonoBehaviour
         playerInput.actions["Jump"].canceled += ctx => jumpInput = false;
 
         playerInput.actions["Dig"].performed += ctx => Dig();
+
+        playerInput.actions["Restart"].performed += ctx => Restart();
     }
     private void HandleMovement()
     {
@@ -153,5 +156,14 @@ public class PlayerMovements : MonoBehaviour
     public void BougeeDig()
     {
         FX_DirtSplatter.Play();
+    }
+
+    private void Restart()
+    {
+        if (health.gameover) { 
+            health.gameOverScreen.SetActive(false);
+            health.gameover = false;
+            health.restartGame();
+        }
     }
 }

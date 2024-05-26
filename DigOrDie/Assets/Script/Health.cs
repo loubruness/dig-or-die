@@ -16,12 +16,14 @@ public class Health : MonoBehaviour
     public GameObject gameOverScreen;
     public GameObject player;
     private Transform[] spawnPoints;
+    public bool gameover;
 
     // Start is called before the first frame update
     private void Awake()
     {
         spawnPoints = new Transform[2];
         spawnPoints = GameObject.Find("PlayerManager").GetComponent<PlayerManager>().spawnPoints;
+        gameover = false;
 
     }
     void Start()
@@ -89,5 +91,6 @@ public class Health : MonoBehaviour
     public void win()
     {
         gameOverScreen.SetActive(true);
+        gameover = true;
     }
 }
