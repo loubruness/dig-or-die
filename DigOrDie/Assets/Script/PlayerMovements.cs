@@ -24,9 +24,9 @@ public class PlayerMovements : MonoBehaviour
     public Transform objective2;
     public Transform treasure;
 
-
     private float jumpForce = 8.0f;
     public GameObject player;
+    public GameObject target;
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -57,6 +57,8 @@ public class PlayerMovements : MonoBehaviour
         playerInput.actions["Jump"].canceled += ctx => jumpInput = false;
 
         playerInput.actions["Dig"].performed += ctx => Dig();
+
+        playerInput.actions["Attack"].performed += ctx => Attack(target);
     }
     private void HandleMovement()
     {
@@ -123,5 +125,9 @@ public class PlayerMovements : MonoBehaviour
             }
         }
         
+    }
+    private void Attack(GameObject target)
+    {
+        transform.GetComponentInChildren<AttributesManager>().DealDamage(target);
     }
 }
