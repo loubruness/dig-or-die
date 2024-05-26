@@ -32,6 +32,7 @@ public class PlayerMovements : MonoBehaviour
 
     private float jumpForce = 8.0f;
     public GameObject player;
+    public GameObject chest;
 
     public Health health;
 
@@ -49,6 +50,7 @@ public class PlayerMovements : MonoBehaviour
         controller = GetComponent<CharacterController>();
         textObjective = GameObject.Find("Text").GetComponent<TextMeshPro>();
         textDeath = GameObject.Find("TextDeath").GetComponent<TextMeshPro>();
+        chest = GameObject.Find("Chest_Animated");
 
 
         //TransplayerCamera = GetComponentInChildren<Camera>().transform;
@@ -138,8 +140,9 @@ public class PlayerMovements : MonoBehaviour
             else if (player.GetComponent<Compass>().missionplace == treasure)
             {
                 textObjective.text = "";
+                Instantiate(chest, new Vector3(transform.position.x, transform.position.y-1, transform.position.z), transform.rotation);
                 Debug.Log("avant gameOverScreen");
-                health.gameOver();
+                health.win();
             }
         }
 

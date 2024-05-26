@@ -85,4 +85,9 @@ public class Health : MonoBehaviour
             player.transform.position = spawnPoints[1].position;
         }
     }
+
+    public void win()
+    {
+        gameOverScreen.SetActive(true);
+    }
 }
