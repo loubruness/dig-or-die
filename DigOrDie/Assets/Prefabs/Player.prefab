@@ -53,6 +53,7 @@ MonoBehaviour:
   fullHeart: {fileID: 21300000, guid: 20f226b2e20f138429197919e64a7876, type: 3}
   emptyHeart: {fileID: 21300000, guid: c0320917f57d5cb4c9a599135730570d, type: 3}
   gameOverScreen: {fileID: 7482380950779676742}
+  player: {fileID: 6651690180896300716}
 --- !u!1 &2196982728154363607
 GameObject:
   m_ObjectHideFlags: 0
