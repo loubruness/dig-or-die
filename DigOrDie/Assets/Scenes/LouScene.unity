@@ -907,6 +907,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 14.159995, y: 0.0000000329688, z: 14.159989}
   m_Center: {x: -0.0000023841853, y: -7.69, z: 0.0000023841856}
+--- !u!1 &1605569127 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6651690180896300716, guid: 54a0ae6ef8fadf142861000cc8008956, type: 3}
+  m_PrefabInstance: {fileID: 3421805843282023113}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1624928118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,6 +1034,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1030025514733248455, guid: 54a0ae6ef8fadf142861000cc8008956, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1605569127}
+    - target: {fileID: 1030025514733248455, guid: 54a0ae6ef8fadf142861000cc8008956, type: 3}
+      propertyPath: treasure
+      value: 
+      objectReference: {fileID: 774191405}
+    - target: {fileID: 1030025514733248455, guid: 54a0ae6ef8fadf142861000cc8008956, type: 3}
+      propertyPath: objective1
+      value: 
+      objectReference: {fileID: 219211082}
+    - target: {fileID: 1030025514733248455, guid: 54a0ae6ef8fadf142861000cc8008956, type: 3}
+      propertyPath: objective2
+      value: 
+      objectReference: {fileID: 1624928122}
+    - target: {fileID: 1964651594071717596, guid: 54a0ae6ef8fadf142861000cc8008956, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6651690180896300716, guid: 54a0ae6ef8fadf142861000cc8008956, type: 3}
       propertyPath: m_Name
       value: Player

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -18,9 +19,14 @@ public class PlayerMovements : MonoBehaviour
     private CharacterController controller;
     private Vector3 moveDirection;
 
+    public Transform missionplace;
+    public Transform objective1;
+    public Transform objective2;
+    public Transform treasure;
+
 
     private float jumpForce = 8.0f;
-
+    public GameObject player;
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -28,8 +34,13 @@ public class PlayerMovements : MonoBehaviour
     }
     void Awake()
     {
+        objective1 = GameObject.Find("Objective1").GetComponent<Transform>();
+        objective2 = GameObject.Find("Objective2").GetComponent<Transform>();
+        treasure = GameObject.Find("Treasure").GetComponent<Transform>();
         playerInput = GetComponent<PlayerInput>();
         controller = GetComponent<CharacterController>();
+
+        
         //TransplayerCamera = GetComponentInChildren<Camera>().transform;
     
 
@@ -44,6 +55,8 @@ public class PlayerMovements : MonoBehaviour
         // Jump Action
         playerInput.actions["Jump"].performed += ctx => jumpInput = ctx.ReadValueAsButton();
         playerInput.actions["Jump"].canceled += ctx => jumpInput = false;
+
+        playerInput.actions["Dig"].performed += ctx => Dig();
     }
     private void HandleMovement()
     {
@@ -52,7 +65,6 @@ public class PlayerMovements : MonoBehaviour
             moveDirection = new Vector3(moveInput.x, 0.0f, moveInput.y);
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
-            //_animator.SetBool("Run", moveInput.magnitude > 0);
 
         }
     }
@@ -76,10 +88,6 @@ public class PlayerMovements : MonoBehaviour
     {
         if (controller.isGrounded && jumpInput)
         {
-            //_animator.SetTrigger("Jump");
-            // Stop other velocity than the y velocity
-            //moveDirection.x = 0;
-            //moveDirection.z = 0;
             moveDirection.y = jumpForce;
         }
 
@@ -95,4 +103,25 @@ public class PlayerMovements : MonoBehaviour
         controller.Move(moveDirection * Time.deltaTime);
     }
 
+    private void Dig()
+    {
+        missionplace = player.GetComponent<Compass>().missionplace;
+        
+        Debug.Log("Digging");
+        Debug.Log("Missionplace.position "+ missionplace.position);
+        Debug.Log("transform.position"+ transform.position);
+        if(Math.Abs(transform.position.x - missionplace.position.x) <=2 && Math.Abs(transform.position.z - missionplace.position.z) <= 2)
+        {
+             Debug.Log("OKKK");
+            if (player.GetComponent<Compass>().missionplace == objective1)
+            {
+                player.GetComponent<Compass>().missionplace = objective2;
+            }
+            else if (player.GetComponent<Compass>().missionplace == objective2)
+            {
+                player.GetComponent<Compass>().missionplace = treasure;
+            }
+        }
+        
+    }
 }

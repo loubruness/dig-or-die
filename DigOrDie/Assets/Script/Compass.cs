@@ -13,7 +13,7 @@ public class Compass : MonoBehaviour
     public RectTransform Missionlayer;
     public RectTransform NorthLayer;
 
-    private Transform missionplace;
+    public Transform missionplace;
     private Transform objective1;
     private Transform objective2;
     private Transform treasure;
@@ -25,7 +25,9 @@ public class Compass : MonoBehaviour
         objective1 = GameObject.Find("Objective1").GetComponent<Transform>();
         objective2 = GameObject.Find("Objective2").GetComponent<Transform>();
         treasure = GameObject.Find("Treasure").GetComponent<Transform>();
+        
         missionplace = objective1;
+        
         
     }
 
@@ -34,17 +36,6 @@ public class Compass : MonoBehaviour
     {
         ChangeNorthDirection();
         ChangeMissionDirection();
-        if(Math.Abs(transform.position.x - missionplace.position.x) <=2 && Math.Abs(transform.position.z - missionplace.position.z) <= 2)
-        {
-            if (missionplace == objective1)
-            {
-                missionplace = objective2;
-            }
-            else if (missionplace == objective2)
-            {
-                missionplace = treasure;
-            }
-        }
     }
 
     public void ChangeNorthDirection()
@@ -56,8 +47,6 @@ public class Compass : MonoBehaviour
 
     public void ChangeMissionDirection()
     {
-        Debug.Log("Mission Direction");
-        Debug.Log(objective1.position);
         Vector3 dir = transform.position - missionplace.position;
 
         MissionDirection = Quaternion.LookRotation(dir);
@@ -68,7 +57,6 @@ public class Compass : MonoBehaviour
 
         Missionlayer.localRotation = MissionDirection * Quaternion.Euler(NorthDirection);
 
-        print(transform.position);
 
     }
 }

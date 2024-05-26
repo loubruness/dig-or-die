@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1964651594071717596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2051616305706814582}
+  m_Layer: 0
+  m_Name: MissionPlace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2051616305706814582
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964651594071717596}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6951777519585269165}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1973226649263996794
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,6 +959,7 @@ Transform:
   - {fileID: 1454903462963439854}
   - {fileID: 4575378481454099325}
   - {fileID: 1325774658904219224}
+  - {fileID: 2051616305706814582}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &7920004551257436736
@@ -970,6 +1002,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   TransplayerCamera: {fileID: 1454903462963439854}
+  missionplace: {fileID: 2051616305706814582}
+  objective1: {fileID: 0}
+  objective2: {fileID: 0}
+  treasure: {fileID: 0}
+  player: {fileID: 6651690180896300716}
 --- !u!136 &8317925952725394435
 CapsuleCollider:
   m_ObjectHideFlags: 0
