@@ -24,6 +24,7 @@ public class PlayerMovements : MonoBehaviour
     public Transform objective2;
     public Transform treasure;
 
+    [SerializeField] ParticleSystem FX_DirtSplatter;
 
     private float jumpForce = 8.0f;
     public GameObject player;
@@ -106,7 +107,8 @@ public class PlayerMovements : MonoBehaviour
     private void Dig()
     {
         missionplace = player.GetComponent<Compass>().missionplace;
-        
+
+        BougeeDig();
         //Debug.Log("Digging");
         //Debug.Log("Missionplace.position "+ missionplace.position);
         //Debug.Log("transform.position"+ transform.position);
@@ -123,5 +125,10 @@ public class PlayerMovements : MonoBehaviour
             }
         }
         
+    }
+
+    public void BougeeDig()
+    {
+        FX_DirtSplatter.Play();
     }
 }
