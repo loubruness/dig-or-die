@@ -107,12 +107,12 @@ public class PlayerMovements : MonoBehaviour
     {
         missionplace = player.GetComponent<Compass>().missionplace;
         
-        Debug.Log("Digging");
-        Debug.Log("Missionplace.position "+ missionplace.position);
-        Debug.Log("transform.position"+ transform.position);
+        //Debug.Log("Digging");
+        //Debug.Log("Missionplace.position "+ missionplace.position);
+        //Debug.Log("transform.position"+ transform.position);
         if(Math.Abs(transform.position.x - missionplace.position.x) <=2 && Math.Abs(transform.position.z - missionplace.position.z) <= 2)
         {
-             Debug.Log("OKKK");
+            //Debug.Log("OKKK");
             if (player.GetComponent<Compass>().missionplace == objective1)
             {
                 player.GetComponent<Compass>().missionplace = objective2;
