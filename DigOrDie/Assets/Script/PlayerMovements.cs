@@ -58,7 +58,7 @@ public class PlayerMovements : MonoBehaviour
 
         playerInput.actions["Dig"].performed += ctx => Dig();
 
-        playerInput.actions["Attack"].performed += ctx => Attack(target);
+        playerInput.actions["Attack"].performed += ctx => Attack();
     }
     private void HandleMovement()
     {
@@ -126,8 +126,8 @@ public class PlayerMovements : MonoBehaviour
         }
         
     }
-    private void Attack(GameObject target)
+    private void Attack()
     {
-        transform.GetComponentInChildren<AttributesManager>().DealDamage(target);
+        
     }
 }
