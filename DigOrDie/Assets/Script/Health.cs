@@ -14,27 +14,36 @@ public class Health : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
     public GameObject gameOverScreen;
+    public GameObject player;
+    private Transform[] spawnPoints;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        spawnPoints = new Transform[2];
+        spawnPoints = GameObject.Find("PlayerManager").GetComponent<PlayerManager>().spawnPoints;
+
+    }
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (health > numOfHearts) {
+        if (health > numOfHearts)
+        {
             health = numOfHearts;
         }
 
-        if(health <1 )
+        if (health < 1 || transform.position.y < -1)
         {
             gameOver();
         }
 
-        for (int i= 0; i < hearts.Length; i++)
+        for (int i = 0; i < hearts.Length; i++)
         {
             if (i < health)
             {
@@ -63,6 +72,17 @@ public class Health : MonoBehaviour
 
     public void gameOver()
     {
-        gameOverScreen.SetActive(true);
+        health = 3;
+
+        Debug.Log("Game Over");
+        Debug.Log("spawnPoints");
+        if (player.name == "Player1")
+        {
+            player.transform.position = spawnPoints[0].position;
+        }
+        else if (player.name == "Player2")
+        {
+            player.transform.position = spawnPoints[1].position;
+        }
     }
 }

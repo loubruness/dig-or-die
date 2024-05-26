@@ -3,7 +3,11 @@ guid: 97afdb0a3b207f845862cfd9dbe9b4e3
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - fullHeart: {fileID: 21300000, guid: 20f226b2e20f138429197919e64a7876, type: 3}
+  - emptyHeart: {fileID: 21300000, guid: c0320917f57d5cb4c9a599135730570d, type: 3}
+  - gameOverScreen: {instanceID: 0}
+  - player: {fileID: 6651690180896300716, guid: 54a0ae6ef8fadf142861000cc8008956, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
