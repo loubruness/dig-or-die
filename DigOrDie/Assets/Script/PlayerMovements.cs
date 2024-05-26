@@ -35,6 +35,8 @@ public class PlayerMovements : MonoBehaviour
     public GameObject chest;
 
     public Health health;
+    [SerializeField] ParticleSystem FX_DirtSplatter;
+
 
     private void Start()
     {
@@ -118,7 +120,7 @@ public class PlayerMovements : MonoBehaviour
     private void Dig()
     {
         missionplace = player.GetComponent<Compass>().missionplace;
-
+        BougeeDig();
         //Debug.Log(text);
         //Debug.Log("Missionplace.position "+ missionplace.position);
         //Debug.Log("transform.position"+ transform.position);
@@ -146,5 +148,10 @@ public class PlayerMovements : MonoBehaviour
             }
         }
 
+    }
+
+    public void BougeeDig()
+    {
+        FX_DirtSplatter.Play();
     }
 }
